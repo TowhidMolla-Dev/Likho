@@ -47,10 +47,9 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesViewHolder> {
         holder.txtview_date.setText(list.get(position).getDate());
         holder.txtview_date.setSelected(true);
 
-        if (list.get(position).isPinned()){
+        if (list.get(position).isPinned()) {
             holder.imgview_pin.setImageResource(R.drawable.pin);
-        }
-        else {
+        } else {
             holder.imgview_pin.setImageResource(0);
         }
 
@@ -75,7 +74,7 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesViewHolder> {
         });
     }
 
-    private int getRandomColor(){
+    private int getRandomColor() {
         List<Integer> colorCode = new ArrayList<>();
 
         colorCode.add(R.color.color1);
@@ -94,11 +93,13 @@ public class NotesListAdapter extends RecyclerView.Adapter<NotesViewHolder> {
         return list.size();
     }
 }
+
 class NotesViewHolder extends RecyclerView.ViewHolder {
 
     CardView notes_container;
-TextView txt_title, txtview_notes, txtview_date;
-ImageView imgview_pin;
+    TextView txt_title, txtview_notes, txtview_date;
+    ImageView imgview_pin;
+
     public NotesViewHolder(@NonNull View itemView) {
         super(itemView);
         notes_container = itemView.findViewById(R.id.notes_container);
