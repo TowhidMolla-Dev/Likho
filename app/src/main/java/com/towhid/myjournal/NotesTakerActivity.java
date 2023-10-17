@@ -13,13 +13,14 @@ import android.widget.Toast;
 import com.towhid.myjournal.Models.Notes;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class NotesTakerActivity extends AppCompatActivity {
     EditText edt_title, edt_notes;
     ImageView imgview_save;
     Notes notes;
-boolean isOldNote = false;
+    boolean isOldNote = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +50,15 @@ boolean isOldNote = false;
                     Toast.makeText(NotesTakerActivity.this, "Please add some notes", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy HH:mm a");
-                Date date = new Date();
+
+                LocalDateTime date = LocalDateTime.now();
 
                 if (!isOldNote){
                     notes = new Notes();
                 }
 
                 notes.setTitle(title);
-                notes.setDate(formatter.format(date));
+                notes.setDate(date.toString());
                 notes.setNotes(description);
 
                 Intent intent = new Intent();

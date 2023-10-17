@@ -5,6 +5,7 @@ import android.icu.text.Replaceable;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.towhid.myjournal.Models.Notes;
@@ -13,8 +14,8 @@ import java.util.List;
 
 @Dao
 public interface MainDAO {
-    @Insert
-    void insert(Notes notes);
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    long insert(Notes notes);
 
     @Query("SELECT * From notes ORDER BY ID DESC")
     List<Notes> getAll();
@@ -25,6 +26,6 @@ public interface MainDAO {
     @Delete
     public void delete(Notes notes);
 
-    @Query("UPDATE notes SET pinned = :pin WHERE ID = id")
+    @Query("UPDATE notes SET pinned = :pin WHERE ID = :id")
     void pin(int id, boolean pin);
 }
