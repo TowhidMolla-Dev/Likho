@@ -1,5 +1,6 @@
 package com.towhid.myjournal.Adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -103,14 +104,16 @@ class NotesViewHolder extends RecyclerView.ViewHolder {
 
     CardView notes_container;
     TextView txt_title, txtview_notes, txtview_date;
+
     ImageView imgview_pin;
+
 
     public NotesViewHolder(@NonNull View itemView) {
         super(itemView);
         notes_container = itemView.findViewById(R.id.notes_container);
-        notes_container = itemView.findViewById(R.id.txt_title);
-        notes_container = itemView.findViewById(R.id.txtview_notes);
-        notes_container = itemView.findViewById(R.id.txtview_date);
-        notes_container = itemView.findViewById(R.id.imgview_pin);
+        txt_title = itemView.findViewById(R.id.txt_title);
+        txtview_notes = itemView.findViewById(R.id.txtview_notes);
+        txtview_date = itemView.findViewById(R.id.txtview_date);
+        imgview_pin = itemView.findViewById(R.id.imgview_pin);
     }
 }
